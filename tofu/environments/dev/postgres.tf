@@ -16,16 +16,16 @@ resource "kubernetes_persistent_volume_claim_v1" "postgres-pvc" {
 	 
 }
 
-resource "kubernetes_service_v1" "postgres-svr" {
+resource "kubernetes_service_v1" "postgres-svc" {
 	metadata {
-		name = "postgres-svr"
+		name = "postgres-svc"
 		namespace = "dev"
 	}
 	spec {
 		selector = {
 			app = "postgres"
 		}
-		type = "LoadBalancer"
+		type = "ClusterIP"
 		port {
 			name = "postgres"
 			port = 5432
@@ -63,15 +63,18 @@ resource "kubernetes_deployment_v1" "postgres" {
 						name = "postgres-storage"
 						mount_path = "/var/lib/postgresql/data"
 					}
-					volume_mount {
-						name = "postgres-config-volume"
-						mount_path = "/var/lib/postgresql/postgresql.conf"
-						sub_path = "postgresql.conf"
-					}
 					env_from {
 						secret_ref {
 							name = "postgres"
 						}
+					}
+					env {
+						name = "POSTGRES_DB"
+						value = "sumcrowds"
+					}
+					env {
+						name = "POSTGRES_HOST_AUTH_METHOD"
+						value = "trust"
 					}
 				}
 				volume {
@@ -79,9 +82,6 @@ resource "kubernetes_deployment_v1" "postgres" {
 					persistent_volume_claim {
 						claim_name = "postgres-pvc"
 					}
-				}
-				volume {
-					name = "postgres-config-volume"
 				}
 			}
 		}

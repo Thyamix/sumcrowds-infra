@@ -10,9 +10,9 @@ resource "kubernetes_config_map_v1" "backend_config" {
 	}
 }
 
-resource "kubernetes_service_v1" "backend-svr" {
+resource "kubernetes_service_v1" "backend-svc" {
 	metadata {
-		name = "backend-svr"
+		name = "backend-svc"
 		namespace = "dev"
 	}
 	spec {

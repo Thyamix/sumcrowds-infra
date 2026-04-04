@@ -1,15 +1,15 @@
 # backend.tf
 
-resource "kubernetes_service_v1" "frontend-svr" {
+resource "kubernetes_service_v1" "frontend-svc" {
 	metadata {
-		name = "frontend-svr"
+		name = "frontend-svc"
 		namespace = "dev"
 	}
 	spec {
 		selector = {
 			app = "frontend"
 		}
-		type = "LoadBalancer"
+		type = "ClusterIP"
 		port {
 			name = "frontend"
 			port = 80
