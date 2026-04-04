@@ -9,7 +9,7 @@ resource "kubernetes_service_v1" "frontend-svc" {
 		selector = {
 			app = "frontend"
 		}
-		type = "ClusterIP"
+		type = "LoadBalancer"
 		port {
 			name = "frontend"
 			port = 80
