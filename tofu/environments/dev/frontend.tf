@@ -1,5 +1,23 @@
 # backend.tf
 
+resource "kubernetes_service_v1" "frontend-svr" {
+	metadata {
+		name = "frontend-svr"
+		namespace = "dev"
+	}
+	spec {
+		selector = {
+			app = "frontend"
+		}
+		type = "LoadBalancer"
+		port {
+			name = "frontend"
+			port = 80
+			target_port = 80
+		}
+	}
+}
+
 resource "kubernetes_deployment_v1" "frontend" {
 	metadata {
 		name = "frontend"
@@ -22,8 +40,9 @@ resource "kubernetes_deployment_v1" "frontend" {
 				container {
 					name = "frontend"
 					image = "git.thyamix.com/thyamix/sumcrowds-frontend:prod-latest"
+					image_pull_policy = "Always"
 					port {
-						container_port = 3000
+						container_port = 80
 					}
 					env {
 						name = "VITE_APIURL"

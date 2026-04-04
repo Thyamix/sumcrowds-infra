@@ -10,6 +10,24 @@ resource "kubernetes_config_map_v1" "backend_config" {
 	}
 }
 
+resource "kubernetes_service_v1" "backend-svr" {
+	metadata {
+		name = "backend-svr"
+		namespace = "dev"
+	}
+	spec {
+		selector = {
+			app = "backend"
+		}
+		type = "LoadBalancer"
+		port {
+			name = "backend"
+			port = 8080
+			target_port = 8080
+		}
+	}
+}
+
 resource "kubernetes_deployment_v1" "backend" {
 	metadata {
 		name = "backend"
@@ -32,6 +50,7 @@ resource "kubernetes_deployment_v1" "backend" {
 				container {
 					name = "backend"
 					image = "git.thyamix.com/thyamix/sumcrowds-counter:prod-latest"
+					image_pull_policy = "Always"
 					port {
 						container_port = 8080
 					}
