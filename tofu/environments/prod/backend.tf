@@ -39,7 +39,7 @@ resource "kubernetes_deployment_v1" "backend" {
 				app = "backend"
 			}
 		}
-		replicas = 1
+		replicas = 5
 		template {
 			metadata {
 				labels = {
@@ -49,7 +49,7 @@ resource "kubernetes_deployment_v1" "backend" {
 			spec {
 				container {
 					name = "backend"
-					image = "git.thyamix.com/thyamix/sumcrowds-counter:53a0ba7966"
+					image = "git.thyamix.com/thyamix/sumcrowds-counter:73952fa8d6"
 					image_pull_policy = "Always"
 					port {
 						container_port = 8080

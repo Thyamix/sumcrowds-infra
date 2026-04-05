@@ -29,7 +29,7 @@ resource "kubernetes_deployment_v1" "frontend" {
 				app = "frontend"
 			}
 		}
-		replicas = 1
+		replicas = 5
 		template {
 			metadata {
 				labels = {
