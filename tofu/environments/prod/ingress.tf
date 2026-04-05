@@ -59,5 +59,22 @@ resource "kubernetes_ingress_v1" "sumcrowds" {
 				}
 			}
 		}
+		rule {
+			host = "sumcrowds.com"
+			http {
+				path {
+					path = "/"
+					path_type = "Prefix"
+					backend {
+						service {
+							name = "marketing-svc"
+							port {
+								number = 4000
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
