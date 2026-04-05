@@ -3,14 +3,17 @@
 resource "kubernetes_ingress_v1" "sumcrowds" {
 	metadata {
 		name = "sumcrowds-ingress"
-		namespace = "dev"
+		namespace = "sumcrowds"
 	}
 	spec {
+		ingress_class_name = "traefik"
+
 		rule {
-			host = "sumcrowds.thyamix.com"
+			host = "app.sumcrowds.com"
 			http {
 				path {
 					path = "/api"
+					path_type = "Prefix"
 					backend {
 						service {
 							name = "backend-svc"
@@ -23,10 +26,11 @@ resource "kubernetes_ingress_v1" "sumcrowds" {
 			}
 		}
 		rule {
-			host = "sumcrowds.thyamix.com"
+			host = "app.sumcrowds.com"
 			http {
 				path {
 					path = "/ws"
+					path_type = "Prefix"
 					backend {
 						service {
 							name = "backend-svc"
@@ -39,9 +43,11 @@ resource "kubernetes_ingress_v1" "sumcrowds" {
 			}
 		}
 		rule {
-			host = "sumcrowds.thyamix.com"
+			host = "app.sumcrowds.com"
 			http {
 				path {
+					path = "/"
+					path_type = "Prefix"
 					backend {
 						service {
 							name = "frontend-svc"

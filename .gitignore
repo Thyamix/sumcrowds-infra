@@ -1,4 +1,4 @@
-/tofu/secrets/dev/plain
-/tofu/environments/dev/.terraform
-/tofu/environments/dev/terraform.tfstate
-/tofu/environments/dev/terraform.tfstate.backup
+/tofu/secrets/*/plain
+.terraform
+terraform.tfstate
+terraform.tfstate.backup

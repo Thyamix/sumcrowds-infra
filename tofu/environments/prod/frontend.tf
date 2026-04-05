@@ -3,13 +3,13 @@
 resource "kubernetes_service_v1" "frontend-svc" {
 	metadata {
 		name = "frontend-svc"
-		namespace = "dev"
+		namespace = "sumcrowds"
 	}
 	spec {
 		selector = {
 			app = "frontend"
 		}
-		type = "LoadBalancer"
+		type = "ClusterIP"
 		port {
 			name = "frontend"
 			port = 3000
@@ -21,7 +21,7 @@ resource "kubernetes_service_v1" "frontend-svc" {
 resource "kubernetes_deployment_v1" "frontend" {
 	metadata {
 		name = "frontend"
-		namespace = "dev"
+		namespace = "sumcrowds"
 	}
 	spec {
 		selector {
@@ -39,7 +39,7 @@ resource "kubernetes_deployment_v1" "frontend" {
 			spec {
 				container {
 					name = "frontend"
-					image = "git.thyamix.com/thyamix/sumcrowds-frontend:latest"
+					image = "git.thyamix.com/thyamix/sumcrowds-frontend:53a0ba7966"
 					image_pull_policy = "Always"
 					port {
 						container_port = 80
