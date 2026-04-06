@@ -67,10 +67,6 @@ resource "kubernetes_deployment_v1" "backend" {
 						name = "CONFIG_PATH"
 						value = "/app/config.prod.toml"
 					}
-					env {
-						name = "ENV_PATH"
-						value = "/app/.env.prod"
-					}
 					env_from {
 						secret_ref {
 							name = "backend"
