@@ -87,8 +87,8 @@ tofu destroy
 
 ## 📄 License
 
-Copyright (c) 2026 Thyamix
+MIT License
 
-All rights reserved.
+Copyright (c) 2026 Thyamix
 
 ---
