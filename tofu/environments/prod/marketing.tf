@@ -39,7 +39,7 @@ resource "kubernetes_deployment_v1" "marketing" {
 			spec {
 				container {
 					name = "marketing"
-					image = "git.thyamix.com/thyamix/sumcrowds-marketing:8f5f990aad"
+					image = "git.thyamix.com/thyamix/sumcrowds/marketing:6f4f73d60f"
 					image_pull_policy = "Always"
 					port {
 						container_port = 80

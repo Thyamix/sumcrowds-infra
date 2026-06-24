@@ -49,7 +49,7 @@ resource "kubernetes_deployment_v1" "backend" {
 			spec {
 				container {
 					name = "backend"
-					image = "git.thyamix.com/thyamix/sumcrowds-counter:73952fa8d6"
+					image = "git.thyamix.com/thyamix/sumcrowds/counter:6f4f73d60f"
 					image_pull_policy = "Always"
 					port {
 						container_port = 8080

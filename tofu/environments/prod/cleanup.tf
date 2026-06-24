@@ -24,7 +24,7 @@ resource "kubernetes_cron_job_v1" "cleanup_cron" {
 						restart_policy = "OnFailure"
 						container {
 							name = "cleanup"
-							image = "git.thyamix.com/thyamix/sumcrowds-cleanup:81e1001a73"
+							image = "git.thyamix.com/thyamix/sumcrowds/cleanup:6f4f73d60f"
 							image_pull_policy = "Always"
 							resources {
 								limits = {

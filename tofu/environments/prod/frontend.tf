@@ -39,7 +39,7 @@ resource "kubernetes_deployment_v1" "frontend" {
 			spec {
 				container {
 					name = "frontend"
-					image = "git.thyamix.com/thyamix/sumcrowds-frontend:73952fa8d6"
+					image = "git.thyamix.com/thyamix/sumcrowds/frontend:6f4f73d60f"
 					image_pull_policy = "Always"
 					port {
 						container_port = 80
