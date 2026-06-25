@@ -40,7 +40,7 @@ resource "kubernetes_deployment_v1" "frontend" {
 				container {
 					name = "frontend"
 					image = "git.thyamix.com/thyamix/sumcrowds/frontend:6f4f73d60f"
-					image_pull_policy = "Always"
+					image_pull_policy = "IfNotPresent"
 					port {
 						container_port = 80
 					}

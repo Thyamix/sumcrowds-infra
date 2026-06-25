@@ -25,7 +25,7 @@ resource "kubernetes_cron_job_v1" "cleanup_cron" {
 						container {
 							name = "cleanup"
 							image = "git.thyamix.com/thyamix/sumcrowds/cleanup:6f4f73d60f"
-							image_pull_policy = "Always"
+							image_pull_policy = "IfNotPresent"
 							resources {
 								limits = {
 									cpu = "500m"

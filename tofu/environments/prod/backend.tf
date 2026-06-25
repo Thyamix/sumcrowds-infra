@@ -50,7 +50,7 @@ resource "kubernetes_deployment_v1" "backend" {
 				container {
 					name = "backend"
 					image = "git.thyamix.com/thyamix/sumcrowds/counter:6f4f73d60f"
-					image_pull_policy = "Always"
+					image_pull_policy = "IfNotPresent"
 					port {
 						container_port = 8080
 					}
