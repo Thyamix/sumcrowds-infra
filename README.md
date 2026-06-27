@@ -6,7 +6,7 @@ This repository defines and manages the full stack required to run the applicati
 
 ---
 
-## 🧱 Overview
+## Overview
 
 This repo provisions the core infrastructure for Sumcrowds, including:
 
@@ -21,31 +21,20 @@ It uses **OpenTofu** to declaratively define and manage resources.
 
 ---
 
-## 🌍 Environments
+## Environments
 
 ### Development (`dev`)
 
 * Used for local/testing deployments
-* Separate infrastructure stack
-* Safer for experimentation
 
 ### Production (`prod`)
 
 * Full production deployment
-* Includes additional components (e.g. `marketing.tf`)
-* Uses production-grade resources and secrets
+* Includes additional components (e.g. `marketing.tf` `cloudflared.tf`)
 
 ---
 
-## ⚙️ Prerequisites
-
-* [OpenTofu](https://opentofu.org/) (or Terraform-compatible CLI)
-* Cloud provider credentials (depending on your setup)
-* Shell access (for running scripts)
-
----
-
-## 🔐 Secrets Management
+## Secrets Management
 
 Secrets are handled via shell scripts:
 
@@ -56,7 +45,7 @@ scripts/secretsprod.sh
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ### Initialize
 
