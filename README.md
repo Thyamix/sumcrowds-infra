@@ -74,7 +74,7 @@ tofu destroy
 
 ---
 
-## 📄 License
+## License
 
 MIT License
 
