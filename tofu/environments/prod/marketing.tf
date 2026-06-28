@@ -1,4 +1,4 @@
-# backend.tf
+# marketing.tf
 
 resource "kubernetes_service_v1" "marketing-svc" {
 	metadata {
